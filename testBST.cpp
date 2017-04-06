@@ -60,7 +60,7 @@ int main() {
 
     /* UNCOMMENT THE LINES BELOW TO TEST THE TEMPLATE-BASED ITERATOR */
 
-    /*
+    
     // Test the template version of the BST  with ints 
     BST<int> btemp;
     for (int item : v) {
@@ -128,7 +128,7 @@ int main() {
 
     cout << "success!" << endl;
 
-    */
+    
 
     // ADD MORE TESTS HERE.  You might also want to change what is input
     // into the vector v.

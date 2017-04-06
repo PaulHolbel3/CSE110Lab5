@@ -1,0 +1,30 @@
+Authors- Vimanyu Saxena, Paul Holbel
+
+Question 1) The new files created were: BSTNodeInt.o and testBST.o
+
+Question 2)
+
+Error-
+[cs100sdl@ieng6-201]:~:22$ make bst
+g++      -g -Wall -std=c++11 -c BSTInt.cpp
+BSTInt.cpp: In function 'bool insert(int)':
+BSTInt.cpp:25:8: error: 'root' was not declared in this scope
+   if (!root) {
+        ^
+BSTInt.cpp:27:7: error: 'isize' was not declared in this scope
+     ++isize;
+       ^
+BSTInt.cpp:31:22: error: 'root' was not declared in this scope
+   BSTNodeInt* curr = root;
+                      ^
+BSTInt.cpp:56:5: error: 'isize' was not declared in this scope
+   ++isize;
+     ^
+make: *** [BSTInt.o] Error 1
+
+Explanation:
+This happens because insert is a method that is defined in the BSTInt class. 
+When we use "bool BSTInt::insert(int item)", we use that method that is 
+already defined. But when we use "bool insert(int item)",we are not accessing
+that defined method and hence we get an error.
+
