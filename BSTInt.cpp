@@ -33,35 +33,23 @@ bool BSTInt::insert(int item)
   
   //changed it to OR
   while (curr->left || curr->right) {
-    
-    if (item < curr->data) 
-    {
-      if(curr->left)
-      {
+    if (item < curr->data) {
+      if(curr->left) {
         curr = curr->left;
       }
-      
-      else
-      {
+      else {
         break;
       }
     }
-
-    else if (curr->data < item) 
-    {
-      if(curr->right)
-      {
+    else if (curr->data < item) {
+      if(curr->right) {
         curr = curr->right;
       }
-      
-      else
-      {
+      else {
         break;
       }
     }
-
-    else 
-    {
+    else {
       return false;
     }
   }
@@ -72,14 +60,11 @@ bool BSTInt::insert(int item)
     curr->left = newNode;
     newNode->parent = curr;
   }
-
   else if(item > curr->data) {
     curr->right = newNode;
     newNode->parent = curr;
   }
-
-  else
-  {
+  else {
     return false;
   }
 
@@ -126,8 +111,23 @@ unsigned int BSTInt::size() const
  */
 int BSTInt::height() const
 {
-  // TODO
-  return 0;
+/*  int left_length, right_length;
+  BSTNodeInt* curr = root;
+
+  if(curr->left != NULL) {
+    left_length = left->height();
+  }
+ 
+  if(curr->right != NULL) {
+    right_length = right->height();
+  }
+
+  if(left_length >= right_length) {
+    return left_lenght + 1;  
+  } else { 
+      return right_length + 1;
+  }*/
+return 0;
 }
 
 
@@ -135,7 +135,10 @@ int BSTInt::height() const
  */
 bool BSTInt::empty() const 
 {
-  // TODO
+  if(isize == 0) { 
+    return true;
+  } 
+  
   return false;
 }
 
@@ -149,5 +152,9 @@ bool BSTInt::empty() const
  */
 void BSTInt::deleteAll(BSTNodeInt* n)
 {
-  // TODO
+  if(n != NULL) { 
+    deleteAll(n->left);
+    deleteAll(n->right);
+    delete n;
+  }   
 }
