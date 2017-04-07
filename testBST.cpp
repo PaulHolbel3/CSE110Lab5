@@ -13,7 +13,7 @@ using namespace std;
 /**
  * A test driver for the BST int class and class template.
  * PA1 CSE 100 2017
- * Author: Christine Alvarado and YOU
+ * Author: Vimanyu Saxena and Paul Holbel
  * TODO: Add more tests
  */
 int main() {
@@ -25,8 +25,9 @@ int main() {
     v.push_back(4);
     v.push_back(1);
     v.push_back(100);
+    v.push_back(1001);
     v.push_back(-33);
-
+    //v.push_back(-33);
     /* Create an instance of BST holding int */
     BSTInt b;
 
@@ -60,7 +61,7 @@ int main() {
 
     /* UNCOMMENT THE LINES BELOW TO TEST THE TEMPLATE-BASED ITERATOR */
 
-    
+    /*    
     // Test the template version of the BST  with ints 
     BST<int> btemp;
     for (int item : v) {
@@ -128,7 +129,7 @@ int main() {
 
     cout << "success!" << endl;
 
-    
+ */   
 
     // ADD MORE TESTS HERE.  You might also want to change what is input
     // into the vector v.
