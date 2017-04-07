@@ -28,3 +28,24 @@ When we use "bool BSTInt::insert(int item)", we use that method that is
 already defined. But when we use "bool insert(int item)",we are not accessing
 that defined method and hence we get an error.
 
+
+Question 3)
+
+The bug was in the function "insert". It would just insert the first three 
+elements properly as it had an "and" condition for the nodes to have
+both the left and right childs to change the value of the "curr" node. 
+
+Question 4)
+
+We spotted the error by just looking at the code as we could realise that
+it wasn't properly inserting after 4 or 5 "insert" calls. By looking at the 
+code, we realised that the "curr" node wasn't changing becuase of the "and"
+condition in the "while" loop. So, we decided to change that to an "or"
+condition and checked to change the value of "curr" node only when there
+was a node present. If not, we would break out of the loop and make a new
+node outside which will have "item" as its data value. With these steps, we
+ensured that all the values inserted will be properly added to the tree. 
+Another change we did was to see if values that already belong to the tree
+are being added again. If this was happening, we would make the "insert" 
+function return false. As the earlier code wasn't checking for this obvious
+condition, it was easy to detect it by just looking at the code.    
