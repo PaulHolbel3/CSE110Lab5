@@ -14,7 +14,8 @@ using namespace std;
  * A test driver for the BST int class and class template.
  * PA1 CSE 100 2017
  * Author: Vimanyu Saxena and Paul Holbel
- * TODO: Add more tests
+ * Description: Testing file for various methods
+ * Date: 8th April 2017
  */
 int main() {
 
@@ -49,17 +50,18 @@ int main() {
         cout << "... which is incorrect." << endl;
         return -1;
     }
-
+    	
     /* Test if Empty */
     if(b.empty()) {
         if(b.size() != 0 ) { 
             cout << "Incorrect when finding empty... " << endl; 
             return -1;
         }
-    }else {
+    }
+    else {
         if(b.size() == 0) { 
              cout << "Incorrect when finding empty... " << endl; 
-            return -1;
+             return -1;
         }
     } 
 
@@ -73,6 +75,12 @@ int main() {
     }
 
     int height = b.height();
+    
+    if(height < 0)
+    {
+      return -1;
+    }
+  
     if(height != 4)
     {
       cout << "Incorrect height value: "<< height  << endl;

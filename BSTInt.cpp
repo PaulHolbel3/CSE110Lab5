@@ -32,21 +32,25 @@ bool BSTInt::insert(int item)
   BSTNodeInt* curr = root;
   
   //changed it to OR
-  while (curr->left || curr->right) {
+  while (curr->left || curr->right) 
+  {
+    //checked if item is less
     if (item < curr->data) {
       if(curr->left) {
         curr = curr->left;
       }
       else {
-        break;
+        break;//break out of the loop
       }
     }
+    
+    //checked if it's more
     else if (curr->data < item) {
       if(curr->right) {
         curr = curr->right;
       }
       else {
-        break;
+        break;//break out of the loop
       }
     }
     else {
@@ -111,20 +115,30 @@ unsigned int BSTInt::size() const
  */
 int BSTInt::height() const
 {
-  return nodeHeight(root)-1;    
+  return nodeHeight(root)-1;
+  //call the helper method    
 }
 
+/**
+ * Helper Method- nodeHeight(BSTNodeInt* root)
+ * recursively goes through all the nodes in a tree
+ * and calculates the height
+ */
 int BSTInt::nodeHeight(BSTNodeInt* root) const
 {
+  //check if root is null
   if(root == NULL)
   {
     return 0;
   } 
-
+  
+  //calculating the height of left side
   int height1 = nodeHeight(root -> left);
- 
+  
+  //calculating the height of right side
   int height2 = nodeHeight(root -> right);
-
+  
+  //compare heights and return accordingly
   if(height1 > height2)
   {
     return height1 + 1;
@@ -143,10 +157,10 @@ bool BSTInt::empty() const
 
   if(root) 
   { 
-    return false;
+    return false;//returns false when root is present
   } 
  
-  return true;
+  return true;//else returns true
 
 }
 
