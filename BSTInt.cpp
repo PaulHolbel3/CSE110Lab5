@@ -111,35 +111,38 @@ unsigned int BSTInt::size() const
  */
 int BSTInt::height() const
 {
-/*  int left_length, right_length;
+  int leftSide, rightSide;
   BSTNodeInt* curr = root;
-
+root->height();
+/*  if(curr->left == NULL && curr->right != NULL) { 
+    return 0;
+  } 
+ 
   if(curr->left != NULL) {
-    left_length = left->height();
+    leftSide = height();
   }
  
   if(curr->right != NULL) {
-    right_length = right->height();
+    rightSide = right->height();
   }
 
-  if(left_length >= right_length) {
-    return left_lenght + 1;  
+  if(leftSide >= rightSide) {
+    return leftSide + 1;  
   } else { 
-      return right_length + 1;
+      return rightSide + 1;
   }*/
 return 0;
 }
-
 
 /** Return true if the BST is empty, else false. 
  */
 bool BSTInt::empty() const 
 {
-  if(isize == 0) { 
-    return true;
+  if(root) { 
+    return false;
   } 
-  
-  return false;
+ 
+  return true;
 }
 
 
