@@ -30,7 +30,6 @@ int main() {
     v.push_back(-343);
     v.push_back(-33333);
     v.push_back(-332);
-    //v.push_back(-33);
     /* Create an instance of BST holding int */
     BSTInt b;
 
@@ -44,13 +43,25 @@ int main() {
         }
     }
 
-
     /* Test size. */
     cout << "Size is: " << b.size() << endl;
     if(b.size() != v.size()) {
         cout << "... which is incorrect." << endl;
         return -1;
     }
+
+    /* Test if Empty */
+    if(b.empty()) {
+        if(b.size() != 0 ) { 
+            cout << "Incorrect when finding empty... " << endl; 
+            return -1;
+        }
+    }else {
+        if(b.size() == 0) { 
+             cout << "Incorrect when finding empty... " << endl; 
+            return -1;
+        }
+    } 
 
     /* Test find return value. */
     // Test the items that are already in the tree
