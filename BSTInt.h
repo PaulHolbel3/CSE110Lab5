@@ -63,7 +63,7 @@ public:
    */
   bool empty() const;
 
-
+  int nodeHeight(BSTNodeInt* root) const;//helper method
 
 private:
 

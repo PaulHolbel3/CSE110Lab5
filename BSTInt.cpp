@@ -126,8 +126,29 @@ unsigned int BSTInt::size() const
  */
 int BSTInt::height() const
 {
-  // TODO
-  return 0;
+  return nodeHeight(root)-1;    
+}
+
+int BSTInt::nodeHeight(BSTNodeInt* root) const
+{
+  if(root == NULL)
+  {
+    return 0;
+  } 
+
+  int height1 = nodeHeight(root -> left);
+ 
+  int height2 = nodeHeight(root -> right);
+
+  if(height1 > height2)
+  {
+    return height1 + 1;
+  }
+  
+  else
+  {
+    return height2 + 1;
+  }
 }
 
 
@@ -135,7 +156,11 @@ int BSTInt::height() const
  */
 bool BSTInt::empty() const 
 {
-  // TODO
+  if(root==NULL)
+  {
+    return true;
+  }
+
   return false;
 }
 

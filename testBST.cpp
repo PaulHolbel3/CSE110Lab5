@@ -27,6 +27,9 @@ int main() {
     v.push_back(100);
     v.push_back(1001);
     v.push_back(-33);
+    v.push_back(-343);
+    v.push_back(-33333);
+    v.push_back(-332);
     //v.push_back(-33);
     /* Create an instance of BST holding int */
     BSTInt b;
@@ -56,6 +59,13 @@ int main() {
             cout << "Incorrect return value when finding " << item << endl;
             return -1;
         }
+    }
+
+    int height = b.height();
+    if(height != 4)
+    {
+      cout << "Incorrect height value: "<< height  << endl;
+      return -1;
     }
 
 
