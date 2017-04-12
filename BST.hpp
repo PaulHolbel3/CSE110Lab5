@@ -111,10 +111,75 @@ BST<Data>::~BST() {
  */
 template <typename Data>
 std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
-  // TODO
   // HINT: Copy code from your BSTInt class and change the return value
   // REPLACE THE LINE BELOW
-  return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(0), false);
+  
+  if (!root) 
+  {
+    root = new BSTNode<Data>(item);
+    ++isize;
+    return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(item), true);
+  }
+
+  BSTNode<Data>* curr = root;
+  
+  //changed it to OR
+  while (curr->left || curr->right) 
+  {
+    //checked if item is less
+    if (item < curr->data) 
+    {
+      if(curr->left) 
+      {
+        curr = curr->left;
+      }
+      else 
+      {
+        break;//break out of the loop
+      }
+    }
+    
+    //checked if it's more
+    else if (curr->data < item) 
+    {
+      if(curr->right) 
+      {
+        curr = curr->right;
+      }
+      else 
+      {
+        break;//break out of the loop
+      }
+    }
+  
+    else 
+    {
+      //return false;
+      return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(item), false);
+    }
+  }
+
+  // Ready to insert
+  BSTNode<Data>* newNode = new BSTNode<Data>(item);
+  if (item < curr->data) 
+  {
+    curr->left = newNode;
+    newNode->parent = curr;
+  }
+  
+  else if(item > curr->data) 
+  {
+    curr->right = newNode;
+    newNode->parent = curr;
+  }
+  
+  else 
+  {
+    return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(item), false);
+  }
+
+  ++isize;
+  return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(item), true);
 
 }
 
@@ -129,9 +194,21 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
 template <typename Data>
 BSTIterator<Data> BST<Data>::find(const Data& item) const
 {
-  // TODO
-  // HINT: Copy code from your BSTInt class and change the return value
-  return BSTIterator<Data>(nullptr);
+   BSTNode<Data>* curr = root;
+    while (curr) {
+    if (curr->data < item) {
+      curr = curr->right;
+    }
+    else if (item < curr->data) {
+      curr = curr->left;
+    }
+    else {
+      return true;
+    }
+  }
+  return false;
+
+  //return BSTIterator<Data>(nullptr);
 
 }
 
