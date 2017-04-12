@@ -90,7 +90,6 @@ int main() {
 
     /* UNCOMMENT THE LINES BELOW TO TEST THE TEMPLATE-BASED ITERATOR */
 
-    /*    
     // Test the template version of the BST  with ints 
     BST<int> btemp;
     for (int item : v) {
@@ -111,6 +110,40 @@ int main() {
               
     }
 
+     /* Test size. */
+    cout << "Testing Size Again, Size is: " << btemp.size() << endl;
+    if(btemp.size() != v.size()) {
+        cout << "... which is incorrect." << endl;
+        return -1;
+    }
+
+    /* Testing to find the correct height */
+    height = btemp.height();
+    
+    if(height < 0) {
+      return -1;
+    }
+    if(height != 4) {
+      cout << "Incorrect height value: "<< height  << endl;
+      return -1;
+    }
+    cout << "Height is: " << height << endl; 
+
+    
+    /* Test if Empty */
+    if(btemp.empty()) {
+        if(btemp.size() != 0 ) { 
+            cout << "Incorrect when finding empty... " << endl; 
+            return -1;
+        }
+    }
+    else {
+        if(btemp.size() == 0) { 
+             cout << "Incorrect when finding empty... " << endl; 
+             return -1;
+        }
+    } 
+
     // Now test finding the elements we just put in
     for (int item: v) {
         cout << "Finding " << item << "...." << endl;
@@ -124,10 +157,8 @@ int main() {
         cout << "success!" << endl;
     }
 
-
-
     // Test the iterator: The iterator should give an in-order traversal
-  
+ /* 
     // Sort the vector, to compare with inorder iteration on the BST
     sort(v.begin(),v.end());
 
@@ -155,13 +186,8 @@ int main() {
         }
         ++it;
     }
-
+*/
     cout << "success!" << endl;
-
- */   
-
-    // ADD MORE TESTS HERE.  You might also want to change what is input
-    // into the vector v.
 
     cout << "All tests passed!" << endl;
     return 0;

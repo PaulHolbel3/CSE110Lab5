@@ -55,10 +55,10 @@ public:
 	  height of an empty tree is -1
    */ 
   int height() const;
-
+  int nodeHeight(BSTNode<Data>*) const;
 
   /** Return true if the BST is empty, else false.
-   */ // TODO
+   */
   bool empty() const;
 
   /** Return an iterator pointing to the first (smallest) item in the BST.
@@ -111,11 +111,62 @@ BST<Data>::~BST() {
  */
 template <typename Data>
 std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
-  // TODO
   // HINT: Copy code from your BSTInt class and change the return value
   // REPLACE THE LINE BELOW
-  return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(0), false);
+  
+  if (!root) {
+    root = new BSTNode<Data>(item);
+    ++isize;
+    return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(root), true);
+    //return true;
+  }
 
+  BSTNode<Data>* curr = root;
+  
+  //changed it to OR
+  while (curr->left || curr->right) 
+  {
+    //checked if item is less
+    if (item < curr->data) {
+      if(curr->left) {
+        curr = curr->left;
+      }
+      else {
+        break;//break out of the loop
+      }
+    }
+    
+    //checked if it's more
+    else if (curr->data < item) {
+      if(curr->right) {
+        curr = curr->right;
+      }
+      else {
+        break;//break out of the loop
+      }
+    }
+    else {
+      return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(curr), false);
+      //return false;
+    }
+  }
+
+  // Ready to insert
+  BSTNode<Data>* newNode = new BSTNode<Data>(item);
+  if (item < curr->data) {
+    curr->left = newNode;
+    newNode->parent = curr;
+  }
+  else if(item > curr->data) {
+    curr->right = newNode;
+    newNode->parent = curr;
+  }
+  else {
+    return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(newNode), false);
+  }
+
+  ++isize;
+  return std::pair<BSTIterator<Data>, bool>(BSTIterator<Data>(newNode), true);
 }
 
 
@@ -129,8 +180,20 @@ std::pair<BSTIterator<Data>, bool> BST<Data>::insert(const Data& item) {
 template <typename Data>
 BSTIterator<Data> BST<Data>::find(const Data& item) const
 {
-  // TODO
   // HINT: Copy code from your BSTInt class and change the return value
+
+  BSTNode<Data>* curr = root;
+  while (curr) {
+    if (curr->data < item) {
+      curr = curr->right;
+    }
+    else if (item < curr->data) {
+      curr = curr->left;
+    }
+    else {
+      return BSTIterator<Data>(curr);
+    }
+  }
   return BSTIterator<Data>(nullptr);
 
 }
@@ -149,20 +212,58 @@ unsigned int BST<Data>::size() const
 template <typename Data> 
 int BST<Data>::height() const
 {
-  // TODO
   // HINT: Copy code from your BSTInt class
-  return 0;
+  //return 0; 
+  return nodeHeight(root)-1;
+  //call the helper method    
 }
 
+/**
+ * Helper Method- nodeHeight(BSTNodeInt* root)
+ * recursively goes through all the nodes in a tree
+ * and calculates the height
+ */
+template <typename Data> 
+int BST<Data>::nodeHeight(BSTNode<Data>* root) const
+{
+  //check if root is null
+  if(root == NULL)
+  {
+    return 0;
+  } 
+  
+  //calculating the height of left side
+  int height1 = nodeHeight(root->left);
+  
+  //calculating the height of right side
+  int height2 = nodeHeight(root->right);
+  
+  //compare heights and return accordingly
+  if(height1 > height2)
+  {
+    return height1 + 1;
+  }
+  
+  else
+  {
+    return height2 + 1;
+  }
+}
 
 /** Return true if the BST is empty, else false.
  */ 
 template <typename Data>
 bool BST<Data>::empty() const
 {
-  // TODO
   // HINT: Copy code form your BSTInt class
-  return false;
+  
+  if(root) 
+  { 
+    return false;//returns false when root is present
+  } 
+ 
+  return true;//else returns true
+
 }
 
 /** Return an iterator pointing to the first (smallest) item in the BST.
@@ -196,8 +297,13 @@ BSTNode<Data>* BST<Data>::first(BSTNode<Data>* root)
 template <typename Data>
 void BST<Data>::deleteAll(BSTNode<Data>* n)
 {
-  // TODO
   // HINT: Copy code from your BSTInt class.
+  if(n != NULL) { 
+    deleteAll(n->left);
+    deleteAll(n->right);
+    delete n;
+  }   
+
 }
 
 
