@@ -39,15 +39,58 @@ public:
 // For a templated class it's easiest to just put them in the same file as the class declaration
 
 template <typename Data>
-BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {}
+BSTNode<Data>::BSTNode(const Data & d) : left(0), right(0), parent(0), data(d) {}
 
 /* Return a pointer to the BSTNode that contains the item that is sequentially next 
  * in the tree */
 template <typename Data>
 BSTNode<Data>* BSTNode<Data>::successor()
 {
-  //TODO 
-  return NULL;
+  BSTNode<Data>* curr  = this;
+
+  if(this->right)
+  {
+    curr = this->right;
+    while(curr->left)
+    {
+      curr = this->left;
+    }
+    
+    return curr;
+  }
+
+  else if(this->parent && this->parent->data > this->data)
+  {
+    curr = this->parent;
+    return curr; 
+  }
+
+  else if(this->parent && this->parent->data < this->data)
+  {
+    curr = this->parent;
+    
+    while(curr->parent && curr->parent->data < curr->data)
+    {
+      curr = curr->parent;
+    }
+    
+    if(curr->parent && curr->parent->data > curr->data)
+    {
+      curr = curr->parent;
+    }  
+    
+    else
+    {
+      return NULL;
+    }
+   
+    return curr;   
+  }  
+  
+  else
+  { 
+    return NULL;
+  }
 }
 
 /** Overload operator<< to print a BSTNode's fields to an ostream. */

@@ -50,17 +50,17 @@ int main(int argc, char* argv[])
         
         // TODO: Create a new BST here
 
-        
+        BST <string> b1;        
         while (getline(in, name)) {
             // TODO: add the name string to the BST
-
+        b1.insert(name);
             
         }
 
         // TODO: Get the height of the BST and store it in height
-
+        height = b1.height();
         // TODO: Get the size of the BST and store it in size
-
+        size = b1.size();
         // DO NOT CHANGE THE LINES BELOW
         cout << "Size of tree: " << size << endl;
         cout << "Height of tree: " << height << endl;
@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
             getline(cin, name);
             
             // TODO: Chainge the if statment to check is name is in the BST
-            if (true) {
+            if (b1.find(name)!=b1.end()) {
                 cout << name << " found!" << endl;
             }
             else {

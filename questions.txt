@@ -49,3 +49,6 @@ Another change we did was to see if values that already belong to the tree
 are being added again. If this was happening, we would make the "insert" 
 function return false. As the earlier code wasn't checking for this obvious
 condition, it was easy to detect it by just looking at the code.    
+
+Question 5)
+

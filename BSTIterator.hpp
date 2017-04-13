@@ -45,9 +45,9 @@ BSTIterator<Data>::BSTIterator(BSTNode<Data>* curr) {
   // Remember the keyword "this" which stores a pointer to the calling object.
   // It will be helpful to distinguish between the parameter "curr" and the 
   // member variable "curr"
-  this->curr = curr; 
-  //BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {}
- 
+  
+  this->curr = curr;  
+  
 }
 
 /** Dereference operator. */
