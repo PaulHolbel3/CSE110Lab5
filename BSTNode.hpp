@@ -53,7 +53,7 @@ BSTNode<Data>* BSTNode<Data>::successor()
     curr = this->right;
     while(curr->left)
     {
-      curr = this->left;
+      curr = curr->left;
     }
     
     return curr;
@@ -81,7 +81,7 @@ BSTNode<Data>* BSTNode<Data>::successor()
     
     else
     {
-      return NULL;
+      return 0;
     }
    
     return curr;   
@@ -89,7 +89,7 @@ BSTNode<Data>* BSTNode<Data>::successor()
   
   else
   { 
-    return NULL;
+    return 0;
   }
 }
 
