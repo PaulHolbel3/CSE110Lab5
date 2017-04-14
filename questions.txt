@@ -50,5 +50,53 @@ are being added again. If this was happening, we would make the "insert"
 function return false. As the earlier code wasn't checking for this obvious
 condition, it was easy to detect it by just looking at the code.    
 
+
 Question 5)
+
+For BSTInt.h: It's pass by value. This is because we want to create a new 
+              object when inserting.
+
+For BST.hpp: It's pass by reference. This is because we don't want to 
+             create a new object when inserting.
+
+
+
+Question 6)
+
+Sorted input produces taller trees.
+
+
+Question 7)
+
+For sorted input: We expect to get a tree of height N as all the input numbers 
+                  will be in one direction either left or right based on the
+                  way the sorted order is.
+
+For random input: We expect to get a tree of height N/2. This will all be in 
+                  a random manner and the average height of all these random
+                  orders may come out to be N/2.
+
+Results:
+
+For sorted input: As expected, the height of the tree when we input all the 
+                  numbers from 1 to 10 in a sorted manner is 10 so the size
+                  is N and the expectations have matched.
+
+For random input: As expected, after doing it for many random orders, the 
+                  average height was somewhere near 5 for numbers 1 to 10.
+                  So the expectations have matched.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
